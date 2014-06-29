@@ -9,3 +9,5 @@ It is partly an experiment in modernizing some pre-existing PHP code.
 - Implement CORS middleware
 - Separation of concerns between MS SQL database methods and SevOne SOAP API methods
 - Uses NotORM for clean OO-style SQL prepared statements 
+- Renders Markdown documentation 
+- Use Composer for NPM like experience for dependencies
