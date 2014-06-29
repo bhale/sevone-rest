@@ -15,11 +15,11 @@ class Sites extends GitsmDB {
     ->select("BuName")
     ->fetch();
 
-    $site['telephony'] = $this->db->TelecomInfo("EnvCode = ?", $site['EnvCode'])
+    $site['telephony'] = $this->db->TelecomInfo("EnvCode = ?", $site['device']['EnvCode'])
     ->select("SiteCac, StationTotal, StationTypes, TelecomOfficeName")
     ->fetch();
 
-    $site['building'] = $this->db->Building("BldgCode = ?", $site['EnvCode'])
+    $site['building'] = $this->db->Building("BldgCode = ?", $site['device']['EnvCode'])
     ->select("FullAddress, Zip")
     ->fetch();
 
