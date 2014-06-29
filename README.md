@@ -11,3 +11,5 @@ It is partly an experiment in modernizing some pre-existing PHP code.
 - Uses NotORM for clean OO-style SQL prepared statements 
 - Renders Markdown documentation 
 - Use Composer for NPM like experience for dependencies
+- Store config in the environment, be stateless (12factor.net)
+- Provide docker build files
