@@ -2,12 +2,26 @@
 
 class Sites extends GitsmDB {
 
-  function getSiteByIp($inputip){
+  function getSiteByIp($ip){
+    $site = array();
+    $site['device'] = $this->db->Equipment("ManagementIp LIKE ? OR MgtToolIp LIKE ?", $ip, $ip)
+    ->select("EnvCode, Hostname, DeviceType, DeviceClass, OutOfBand, Comments")
+    ->fetch();
 
-    $site = $this->findOne("SELECT Equipment.EnvCode, StreetAddress2, OfficeDescription, ArchitectureRule, PhysicalLocation.LocalContact, LocalContactPhoneNumber, OutboundQos, InboundQos, Equipment.Hostname, ManagementIp, MdfIdf, LocationInSite, DeviceType, DeviceClass, OutOfBand, Equipment.Comments,  PhysicalLocationBu.BuName FROM PhysicalLocation, Equipment, TelecomInfo, PhysicalLocationBu WHERE PhysicalLocation.EnvCode = Equipment.EnvCode AND (Equipment.ManagementIp = '".$inputip."' OR Equipment.MgtToolIp = '".$inputip."') AND (PhysicalLocation.EnvCode = PhysicalLocationBu.EnvCode)");
-    $site['telephony'] = $this->findOne("SELECT SiteCac, StationTotal, StationTypes, TelecomOfficeName FROM TelecomInfo WHERE TelecomInfo.EnvCode = '" . $site['EnvCode'] ."'");
-    $site['device'] = $this->findOne("SELECT SerialNumber, Vendor, Model FROM EquipmentComponent WHERE Hostname LIKE '".$site['hostname']."'");
-    $site['building'] = $this->findOne("SELECT FullAddress, Zip FROM Building WHERE BldgCode LIKE '".$site['envcode']."'");
+    $site['location'] = $this->db->PhysicalLocation("EnvCode = ?", $site['device']['EnvCode'])
+    ->fetch();
+
+    $site['businessUnit'] = $this->db->PhysicalLocationBu("EnvCode = ?", $site['device']['EnvCode'])
+    ->select("BuName")
+    ->fetch();
+
+    $site['telephony'] = $this->db->TelecomInfo("EnvCode = ?", $site['EnvCode'])
+    ->select("SiteCac, StationTotal, StationTypes, TelecomOfficeName")
+    ->fetch();
+
+    $site['building'] = $this->db->Building("BldgCode = ?", $site['EnvCode'])
+    ->select("FullAddress, Zip")
+    ->fetch();
 
     return $site;
   }

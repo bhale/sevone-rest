@@ -10,6 +10,9 @@ class GitsmDB {
 
     mssql_connect($host, $user, $password) or die ("Could not connect to MSSQL");
     mssql_select_db($database);
+
+    $pdo = new PDO("dblib:host=$host;dbname=$database", $user, $password);
+    $this->db = new NotORM($pdo);
   }
 
   function findOne($query) {

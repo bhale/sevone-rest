@@ -31,5 +31,10 @@ class Equipment extends GitsmDB {
     }
     return $equipment;
   }
+
+  function getEquipmentComponentByHostname($hostname) {
+    $equipment = $this->findOne("SELECT * FROM EquipmentComponent WHERE Hostname LIKE '".$hostname."'");
+    return $equipment;
+  }
 }
 ?>

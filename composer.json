@@ -1,6 +1,7 @@
 {
   "require": {
 	"slim/slim": "2.*",
-	"michelf/php-markdown": "1.4.*"
+	"michelf/php-markdown": "1.4.*",
+  "vrana/notorm": "dev-master"
   }
 }
