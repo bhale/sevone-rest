@@ -34,7 +34,10 @@ class capacityCtrl {
     $devices = $this->soap->client->group_getDevicesByGroupId(5);  // All the WAN devices from SevOne
 
     foreach ($devices as $device) {
-
+      if(!isset($device->envcode)) {
+        $device->envcode = "No Database Match";
+      }
+      
       $sites[$device->envcode]['businessUnits'] = array();
 
       // If we find a match for the device in the Network Database,
