@@ -1,0 +1,6 @@
+{
+  "require": {
+	"slim/slim": "2.*",
+	"michelf/php-markdown": "1.4.*"
+  }
+}
