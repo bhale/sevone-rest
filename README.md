@@ -7,4 +7,4 @@ It is partly an experiment in modernizing some pre-existing PHP code.
 - Try to stick to OO/MVC/DRY patterns
 - Implement router/front controller pattern with Slim
 - Implement CORS middleware
-- Separation of concerns between MS SQL database and SevOne SOAP API
+- Separation of concerns between MS SQL database methods and SevOne SOAP API methods
