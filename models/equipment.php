@@ -1,17 +1,6 @@
 <?php
 
-class GitsmDB {
-
-  function __construct() {
-    // Connect to GITSM DB
-    $host = $_ENV["GITSM_DB_HOST"];
-    $user = $_ENV["GITSM_DB_USER"];
-    $password = $_ENV["GITSM_DB_PASSWORD"];
-    $database = $_ENV["GITSM_DB_DATABASE"];
-
-    mssql_connect($host, $user, $password) or die ("Could not connect to MSSQL");
-    mssql_select_db($database);
-  }
+class Equipment extends GitsmDB {
 
   function getEquipment() {
     // Return an array of equipment from the GITSM DB indexed by IP,

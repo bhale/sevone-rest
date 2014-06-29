@@ -4,7 +4,7 @@ class capacityCtrl {
 
   function __construct() {
     $this->soap = new SevOneSOAP();
-    $this->gitsm = new GitsmDB();
+    $this->equipment = new Equipment();
   }
 
   function add() {
@@ -28,7 +28,7 @@ class capacityCtrl {
     // Include Business Unit affiliations for devices that match the GITSM Equipment table
     $sites = array();
 
-    $equipment = $this->gitsm->getEquipment(); // All equipment with business unit affiliation from the GITSM DB
+    $equipment = $this->equipment->getEquipment(); // All equipment with business unit affiliation from the GITSM DB
     $groups = $this->getCapacityObjectGroups(); // Object groups under the Capacity Planning class, with child objects
     $interfaces = $this->getInterfaceObjects(); // All suspected WAN objects (from 'WAN Interface' object group)
     $devices = $this->soap->client->group_getDevicesByGroupId(5);  // All the WAN devices from SevOne
@@ -37,7 +37,7 @@ class capacityCtrl {
       if(!isset($device->envcode)) {
         $device->envcode = "No Database Match";
       }
-      
+
       $sites[$device->envcode]['businessUnits'] = array();
 
       // If we find a match for the device in the Network Database,
