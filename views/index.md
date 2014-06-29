@@ -1,7 +1,3 @@
-<!doctype html>
-<html>
-<body style='padding-left: 10px; font-family: Verdana, Helvetica Neue, Helvetica;'>
-
 ## SevOne REST API
 
 ### Alerts
@@ -19,6 +15,3 @@
 *   GET /capacity
 *   POST /capacity
 *   DELETE /capacity/:id
-
-</body>
-</html>
