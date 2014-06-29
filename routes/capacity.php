@@ -1,7 +1,7 @@
 <?php
 $capacity = new capacityCtrl();
 
-$app->get('/capacity', function () use ($capacity) {
+$app->get('/capacity', function () use ($capacity, $app) {
     $data = $capacity->getDevicesBySite();
 	  $app->response->write($data);
 });

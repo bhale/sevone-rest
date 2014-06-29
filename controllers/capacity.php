@@ -29,8 +29,8 @@ class capacityCtrl {
     $sites = array();
 
     $equipment = $this->gitsm->getEquipment(); // All equipment with business unit affiliation from the GITSM DB
-    $groups = getCapacityObjectGroups(); // Object groups under the Capacity Planning class, with child objects
-    $interfaces = getInterfaceObjects(); // All suspected WAN objects (from 'WAN Interface' object group)
+    $groups = $this->getCapacityObjectGroups(); // Object groups under the Capacity Planning class, with child objects
+    $interfaces = $this->getInterfaceObjects(); // All suspected WAN objects (from 'WAN Interface' object group)
     $devices = $this->soap->client->group_getDevicesByGroupId(5);  // All the WAN devices from SevOne
 
     foreach ($devices as $device) {

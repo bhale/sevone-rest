@@ -1,9 +1,9 @@
 <?php
 
 class SevOneSOAP {
-  
+
   function __construct() {
-    $this->client = connect();
+    $this->client = $this->connect();
   }
 
   function connect() {
@@ -21,7 +21,7 @@ class SevOneSOAP {
     } else {
 
       try {
-        $result = $client->authenticate( '$user', '$password' );
+        $result = $client->authenticate( $user, $password );
         if ( $result ) {
           return $client;
         } else {

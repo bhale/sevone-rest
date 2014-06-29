@@ -16,7 +16,7 @@ class GitsmDB {
   function getEquipment() {
     // Return an array of equipment from the GITSM DB indexed by IP,
     // including SevOne objectGroupId(s) for the location's resultsiness Unit(s)
-    $sql = "SELECT Equipment.EnvCode, resultName, MgtToolIp, ManagementIp, Hostname FROM Equipment, PhysicalLocationresult WHERE Equipment.EnvCode = PhysicalLocationresult.EnvCode ORDER BY Equipment.EnvCode";
+    $sql = "SELECT Equipment.EnvCode, buName, MgtToolIp, ManagementIp, Hostname FROM Equipment, PhysicalLocationBu WHERE Equipment.EnvCode = PhysicalLocationBu.EnvCode ORDER BY Equipment.EnvCode";
     $msresult = mssql_query($sql);
     $object_groups = array();
 
