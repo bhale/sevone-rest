@@ -9,8 +9,8 @@ class sitesCtrl {
 
   function getSiteBySevOneDeviceId($id) {
     $device = $this->soap->client->core_getDeviceById($id);
-    $device->site = $this->sites->getSiteByIp($device->ip);
-    return json_encode($device);
+    $site = $this->sites->getSiteByIp($device->ip);
+    return json_encode($site);
   }
 }
 ?>
