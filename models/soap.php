@@ -10,7 +10,7 @@ class SevOneSOAP {
     ini_set( "soap.wsdl_cache_enabled", 0 );
 
     $soapURL = getenv('SEVONE_URL');
-    $user = getenv('SEVONE_USER')';
+    $user = getenv('SEVONE_USER');
     $password = getenv('SEVONE_PASSWORD');
 
     $client = new SoapClient($soapURL, array( 'trace' => 1 ) );
