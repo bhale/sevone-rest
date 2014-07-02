@@ -9,9 +9,9 @@ class SevOneSOAP {
   function connect() {
     ini_set( "soap.wsdl_cache_enabled", 0 );
 
-    $soapURL = $_ENV["SEVONE_URL"];
-    $user = $_ENV["SEVONE_USER"];
-    $password = $_ENV["SEVONE_PASSWORD"];
+    $soapURL = getenv('SEVONE_URL');
+    $user = getenv('SEVONE_USER')';
+    $password = getenv('SEVONE_PASSWORD');
 
     $client = new SoapClient($soapURL, array( 'trace' => 1 ) );
 
